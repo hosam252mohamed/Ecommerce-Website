@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website | Product</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a href="/"><img src="imgs/logo.png" alt=""></a>
+        <ul class="navbar">
+          <div class="nav-overlay"></div>
+          <li><i class="fa-sharp fa-solid fa-xmark-large close-icon"></i></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html" class="shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+        </ul>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+      </div>
+    </header>
+    <div class="product-view">
+      <div class="container">
+        <div class="content">
+          <div class="image">
+            <img src="imgs/products/f1.jpg" alt="">
+            <div class="bg-open"></div>
+          </div>
+          <div class="details">
+            <div class="type"><a href="index.html">Home</a>/T-shirt</div>
+            <h3>Cartoon Astronaut T-Shirts</h3>
+            <h2 class="price">78</h2>
+            <label>Select Size</label>
+            <select name="size">
+              <option value="S">S</option>
+              <option value="M">M</option>
+              <option value="L" selected>L</option>
+              <option value="XL">XL</option>
+              <option value="XXL">XXL</option>
+            </select>
+            <div class="add">
+              <input type="number" value="1" min="1" name="amount">
+              <button>
+                Add To Cart
+              </button>
+            </div>
+            <div class="description">
+              <h4>Product Details</h4>
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati maxime tenetur harum dolorem
+                consequuntur magni! Non voluptas laborum odio suscipit iusto impedit vitae? Sequi, quo dicta. Soluta vel
+                delectus saepe.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="info">
+          <a href="#"><img src="imgs/logo.png" alt=""></a>
+          <span>Contact</span>
+          <address><span>Address: </span>54 Kasr El-Nile St., Down Town</address>
+          <p><span>Phone: </span>+20123456789/+20987654321</p>
+          <p><span>Hours: </span>10:00 - 18:00. Mon - Sat</p>
+          <span>Follow Us</span>
+          <div class="social">
+            <a href="https://www.facebook.com/hosam1000mohamed" target="_blank"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/hosammo67221125" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@hossam_ejust" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/hossams0/" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+          </div>
+        </div>
+        <ul class="about">
+          <span>About</span>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Delivery Information</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+        <ul class="account">
+          <span>My Account</span>
+          <li><a href="#">Sign In</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="#">My Wishlist</a></li>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+        <div class="download-app">
+          <span>Install App</span>
+          <p>From App Store or Google Play</p>
+          <div class="google-apple">
+            <div class="image">
+              <img src="imgs/pay/apple.png" alt="">
+            </div>
+            <div class="image">
+              <img src="imgs/pay/play.png" alt="">
+            </div>
+          </div>
+          <p>Secure Payment Getways</p>
+          <img src="imgs/pay/pay.png" alt="">
+        </div>
+      </div>
+      <p class="copyright">&copy; 2023 Ecommerce Website</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+      let viewImg = document.querySelector(".product-view .image img");
+      viewImg.onclick = function () {
+        this.classList.add("view");
+      };
+      document.querySelector(".product-view .image .bg-open").onclick = function () {
+        viewImg.classList.remove("view")
+      }
+      if (localStorage.getItem("product-details")) {
+
+        let dataProduct = JSON.parse(localStorage.getItem("product-details"));
+        document.querySelector(".product-view .image img").src = dataProduct.src;
+        document.querySelector(".product-view .details h3").textContent = dataProduct.title;
+        document.querySelector(".product-view .details .price").textContent = dataProduct.price;
+      }
+
+      let addtoCart = document.querySelector(".add button");
+      let InputCount = document.querySelector(".add input")
+      let cartSpan = document.querySelector("header .shopping-bag span");
+      addtoCart.onclick = function () {
+        this.innerHTML = `<span class="loading"></span>`;
+        this.classList.add("clicked")
+
+        setTimeout(() => {
+          this.classList.remove("clicked")
+          this.innerHTML = `Add To Cart`;
+          cartSpan.style.display = "grid";
+          if (cartSpan.innerHTML === "") cartSpan.innerHTML = 0;
+          cartSpan.innerHTML = +cartSpan.innerHTML + +InputCount.value;
+          localStorage.setItem("itemsLength", cartSpan.innerHTML);
+
+          let dataProduct = {};
+          dataProduct.src = document.querySelector(".product-view .image img").src;
+          dataProduct.title = document.querySelector(".product-view .details h3").textContent;
+          dataProduct.price = document.querySelector(".product-view .details .price").textContent;
+          dataProduct.size = document.querySelector(".details select option[selected]").textContent;
+          dataProduct.amount = document.querySelector(".details .add input").value;
+
+          productsArray.push(dataProduct);
+          localStorage.setItem("products", JSON.stringify(productsArray));
+        }, 1200);
+
+      }
+
+    </script>
+  </body>
+
+</html>
