@@ -1884,7 +1884,7 @@ footer > p {
 /* End About Section */
 
 .details-location {
-  padding: var(--main-padding) 0;
+  padding-top: var(--main-padding);
 }
 .details-location .content {
   display: flex;
