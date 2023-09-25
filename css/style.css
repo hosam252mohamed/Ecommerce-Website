@@ -1361,13 +1361,13 @@ footer > p a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 25px;
+  gap: 22px;
   margin-bottom: 50px;
 }
 
 .shop-products .product-and-cart {
   transition: var(--transition-duration);
-  max-width: 260px;
+  max-width: 267px;
 }
 .shop-products .product-and-cart.show {
   opacity: 1;
