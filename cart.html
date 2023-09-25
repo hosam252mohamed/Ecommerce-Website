@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website | Product</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <div class="container">
+        <a href="/"><img src="imgs/logo.png" alt=""></a>
+        <ul class="navbar">
+          <div class="nav-overlay"></div>
+          <li><i class="fa-sharp fa-solid fa-xmark-large close-icon"></i></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="cart.html" class="shopping-bag active"><i
+                class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+        </ul>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+      </div>
+    </header>
+    <div class="table-cart">
+      <div class="container">
+        <table width="100%">
+          <thead>
+            <tr>
+              <td>Remove</td>
+              <td>Image</td>
+              <td class="title">Product</td>
+              <td>Size</td>
+              <td>Price</td>
+              <td>Amount</td>
+              <td>Subtotal</td>
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="cart-checkout">
+      <div class="container">
+        <div class="coupon">
+          <h3>Apply Coupon</h3>
+          <input type="text" placeholder="Enter Your Coupon">
+          <input type="submit" value="Apply">
+        </div>
+        <div class="checkout">
+          <h4>Cart Total</h4>
+          <table width="100%">
+            <tr>
+              <td>Cart Subtotal</td>
+              <td>$<span class="subtotal">200</span></td>
+            </tr>
+            <tr>
+              <td>Shipping</td>
+              <td>Free</td>
+            </tr>
+            <tr>
+
+              <td>Total</td>
+              <td>$<span class="total">200</span></td>
+            </tr>
+          </table>
+          <button class="place-order">Place Your Order</button>
+        </div>
+      </div>
+      <audio src="audio/order-placed.mp3" class="order-audio"></audio>
+    </div>
+    <footer>
+      <div class="container">
+        <div class="info">
+          <a href="#"><img src="imgs/logo.png" alt=""></a>
+          <span>Contact</span>
+          <address><span>Address: </span>54 Kasr El-Nile St., Down Town</address>
+          <p><span>Phone: </span>+20123456789/+20987654321</p>
+          <p><span>Hours: </span>10:00 - 18:00. Mon - Sat</p>
+          <span>Follow Us</span>
+          <div class="social">
+            <a href="https://www.facebook.com/hosam1000mohamed" target="_blank"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/hosammo67221125" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@hossam_ejust" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/hossams0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/hosam252mohamed" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <ul class="about">
+          <span>About</span>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Delivery Information</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="account">
+          <span>My Account</span>
+          <li><a href="#">Sign In</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="#">My Wishlist</a></li>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+        <div class="download-app">
+          <span>Install App</span>
+          <p>From App Store or Google Play</p>
+          <div class="google-apple">
+            <div class="image">
+              <img src="imgs/pay/apple.png" alt="">
+            </div>
+            <div class="image">
+              <img src="imgs/pay/play.png" alt="">
+            </div>
+          </div>
+          <p>Secure Payment Getways</p>
+          <img src="imgs/pay/pay.png" alt="">
+        </div>
+      </div>
+      <p class="copyright">&copy; 2023 Ecommerce Website By <a href="https://github.com/hosam252mohamed">Hossam</a></p>
+    </footer>
+    <script src="js/sweetalert.js"></script>
+    <script src="js/main.js"></script>
+    <script>
+
+      // cleaning array of Products from repeat
+      let newArray = productsArray.slice();
+      for (let i = 0; i < newArray.length; i++) {
+        for (let j = i + 1; j < productsArray.length; j++) {
+          if (newArray[i].src === productsArray[j].src && newArray[i].size === productsArray[j].size) {
+            newArray[i].amount = +newArray[i].amount + +productsArray[j].amount;
+          }
+        }
+      }
+      let finalArray = [];
+      for (let i = 0; i < newArray.length; i++) {
+        for (let j = i + 1; j < newArray.length; j++) {
+          if (newArray[i].src === newArray[j].src && newArray[i].size === newArray[j].size) {
+            newArray[j].amount = 0;
+          }
+        }
+        if (newArray[i].amount !== 0) {
+          finalArray.push(newArray[i]);
+        }
+      }
+      localStorage.setItem("products", JSON.stringify(finalArray));
+      // -----------------------------------------------------------------------
+
+      let tbody = document.querySelector(".table-cart tbody");
+      for (let i = 0; i < finalArray.length; i++) {
+        tbody.innerHTML += `<tr class="product-info">
+              <td><i class="fa-sharp fa-regular fa-circle-xmark remove" title="Remove"></i></td>
+              <td><img src="${finalArray[i].src}" alt=""></td>
+              <td class="title">${finalArray[i].title}</td>
+              <td class="size">${finalArray[i].size}</td>
+              <td class="price">$<span>${finalArray[i].price}</span></td>
+              <td><input type="number" value="${finalArray[i].amount}" min="1"></td>
+              <td>$<span class="product-subtotal">${finalArray[i].amount * finalArray[i].price}</span></td>
+            </tr>`
+      }
+      document.addEventListener("click", function (e) {
+
+        if (e.target.classList.contains("remove")) {
+          let src = e.target.parentNode.nextElementSibling.children[0].getAttribute("src");
+          let size = e.target.parentNode.parentNode.children[3].textContent;
+          for (let i = 0; i < finalArray.length; i++) {
+            if (finalArray[i].src === src && finalArray[i].size === size) {
+              document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
+                span.innerHTML -= finalArray[i].amount;
+                localStorage.setItem("itemsLength", span.innerHTML);
+                if (span.innerHTML === "0") {
+                  span.style.display = "none";
+                  localStorage.clear("itemsLength");
+                }
+              })
+              finalArray.splice(i, 1);
+              localStorage.setItem("products", JSON.stringify(finalArray));
+            }
+          }
+
+          e.target.parentNode.parentNode.remove();
+          calcPrice();
+          checkEmpty();
+        }
+      })
+
+      checkEmpty();
+
+      function checkEmpty() {
+        if (document.querySelector(".table-cart tbody").innerHTML.trim() === "") {
+          let table = document.querySelector(".table-cart table");
+          table.style.display = "none";
+          let p = document.createElement("p");
+          p.className = "empty";
+          p.textContent = "Your Cart Is Empty";
+          document.querySelector(".table-cart .container").appendChild(p);
+        }
+      }
+
+      let AmountInput = document.querySelectorAll(".product-info input[type='number']");
+      AmountInput.forEach(input => {
+        input.oninput = function () {
+          let src = input.parentNode.parentNode.children[1].children[0].getAttribute("src");
+          let size = input.parentNode.parentNode.children[3].textContent;
+          for (let i = 0; i < finalArray.length; i++) {
+            if (finalArray[i].src === src && finalArray[i].size === size) {
+              finalArray[i].amount = input.value;
+
+              changeProductPrice(input);
+
+              let totalProducts = 0;
+              finalArray.forEach(el => {
+                totalProducts += +el.amount
+              });
+              document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
+                span.innerHTML = totalProducts;
+                localStorage.setItem("itemsLength", span.innerHTML);
+              })
+              localStorage.setItem("products", JSON.stringify(finalArray));
+            }
+          }
+        }
+      })
+
+      function changeProductPrice(input) {
+        let price = input.parentNode.parentNode.children[4].children[0];;
+        let productSubtotal = input.parentNode.parentNode.children[6].children[0];
+
+        productSubtotal.innerHTML = input.value * price.innerHTML;
+        calcPrice();
+      }
+
+      calcPrice();
+
+      function calcPrice() {
+        let subtotal = document.querySelector(".subtotal");
+        let total = document.querySelector(".total");
+        let productSubtotal = document.querySelectorAll(".product-subtotal");
+
+        let totalPrice = 0;
+        productSubtotal.forEach(el => {
+          totalPrice += +el.innerHTML;
+        })
+        subtotal.innerHTML = totalPrice;
+        total.innerHTML = totalPrice;
+      }
+
+      document.querySelector(".place-order").onclick = function () {
+        if (document.querySelector(".table-cart tbody").innerHTML.trim() !== "") {
+          document.querySelector(".order-audio").play();
+          swal("Done!", "Your Order Has Reached Successfully!", "success").then(status => {
+            if (status) {
+              [...document.querySelector(".table-cart table tbody").children].forEach(child => {
+                child.remove();
+              });
+              checkEmpty();
+              calcPrice();
+
+              document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
+                span.style.display = "none";
+                localStorage.clear("itemsLength");
+              })
+              localStorage.clear("products");
+            }
+          });
+        }
+
+      }
+    </script>
+  </body>
+
+</html>

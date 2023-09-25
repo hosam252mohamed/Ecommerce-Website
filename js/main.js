@@ -39,8 +39,6 @@ cartAdd.forEach((el) => {
   el.addEventListener("click", function () {
     this.innerHTML = `<span class="loading"></span>`;
     this.classList.add("clicked");
-    console.log(this.classList);
-
     setTimeout(() => {
       this.classList.remove("clicked");
       this.innerHTML = "";
@@ -50,12 +48,11 @@ cartAdd.forEach((el) => {
           cartSpan.innerHTML = 1;
         } else cartSpan.innerHTML = +cartSpan.innerHTML + 1;
         localStorage.setItem("itemsLength", cartSpan.innerHTML);
-
-        let productObj = storeProduct(el.parentNode.children[0].children);
-        productsArray.push(productObj);
-        localStorage.setItem("products", JSON.stringify(productsArray));
       });
-    }, 1500);
+      let productObj = storeProduct(el.parentNode.children[0].children);
+      productsArray.push(productObj);
+      localStorage.setItem("products", JSON.stringify(productsArray));
+    }, 1200);
   });
 });
 
