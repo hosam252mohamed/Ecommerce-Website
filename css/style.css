@@ -251,8 +251,8 @@ h6 {
 
 .scrolling-up {
   position: fixed;
-  bottom: 25px;
-  right: 30px;
+  bottom: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   background-color: var(--secondary-color);
@@ -372,6 +372,7 @@ header .shopping-bag span {
 header .bag {
   display: none;
 }
+
 @media (max-width: 768px) {
   header .navbar {
     flex-direction: column;
@@ -439,6 +440,10 @@ header .bag {
     font-weight: 600;
     transition: var(--transition-duration);
     font-size: 21px;
+  }
+  header a.bag.active,
+  header a.bag:hover {
+    color: var(--secondary-color);
   }
   header .shopping-bag {
     margin-left: 10px;
