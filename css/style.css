@@ -248,6 +248,45 @@ h6 {
   margin-bottom: 40px;
   color: #666;
 }
+
+.scrolling-up {
+  position: fixed;
+  bottom: 25px;
+  right: 30px;
+  width: 40px;
+  height: 40px;
+  background-color: var(--secondary-color);
+  border-radius: 50%;
+  z-index: 999;
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition-duration);
+}
+.scrolling-up.show {
+  opacity: 0.8;
+}
+.scrolling-up::before {
+  position: absolute;
+  content: "\f102";
+  font-family: "Font Awesome 6 Duotone";
+  color: var(--fa-primary-color, inherit);
+  opacity: var(--fa-primary-opacity, 1);
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 900;
+}
+.scrolling-up::after {
+  position: absolute;
+  content: "\f102";
+  font-family: "Font Awesome 6 Duotone";
+  opacity: var(--fa-secondary-opacity, 0.4);
+  color: var(--fa-secondary-color, inherit);
+  font-weight: 900;
+  left: 50%;
+  top: 66%;
+  transform: translate(-50%, -50%);
+}
 /* End Special Heading */
 
 .overlay {

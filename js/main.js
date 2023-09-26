@@ -1,3 +1,12 @@
+let scrollingUp = document.querySelector(".scrolling-up");
+window.onscroll = function () {
+  if (window.scrollY >= 600) scrollingUp.classList.add("show");
+  else scrollingUp.classList.remove("show");
+};
+scrollingUp.onclick = function () {
+  window.scrollTo(0, 0);
+};
+
 let barIcon = document.querySelector(".bar-icon");
 let closeIcon = document.querySelector(".close-icon");
 let navBar = document.querySelector(".navbar");
