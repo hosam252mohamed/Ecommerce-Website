@@ -218,7 +218,8 @@
           let size = input.parentNode.parentNode.children[3].textContent;
           for (let i = 0; i < finalArray.length; i++) {
             if (finalArray[i].src === src && finalArray[i].size === size) {
-              finalArray[i].amount = input.value;
+              if (input.value < 1) finalArray[i].amount = 1;
+              else finalArray[i].amount = input.value;
 
               changeProductPrice(input);
 
@@ -230,8 +231,27 @@
                 span.innerHTML = totalProducts;
                 localStorage.setItem("itemsLength", span.innerHTML);
               })
+
               localStorage.setItem("products", JSON.stringify(finalArray));
             }
+          }
+        }
+      })
+
+      AmountInput.forEach(input => {
+        input.onblur = function () {
+          if (this.value < 1 || this.value === "") {
+            this.value = 1;
+            changeProductPrice(input);
+
+            // let totalProducts = 0;
+            // finalArray.forEach(el => {
+            //   totalProducts += +el.amount
+            // });
+            // document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
+            //   span.innerHTML = totalProducts;
+            //   localStorage.setItem("itemsLength", span.innerHTML);
+            // })
           }
         }
       })

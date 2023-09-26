@@ -139,6 +139,8 @@
       let addtoCart = document.querySelector(".add button");
       let InputCount = document.querySelector(".add input")
       let cartSpan = document.querySelector("header .shopping-bag span");
+      let inputNumber = document.querySelector(".add input[type='number']");
+
       addtoCart.onclick = function () {
         this.innerHTML = `<span class="loading"></span>`;
         this.classList.add("clicked")
@@ -161,7 +163,10 @@
           productsArray.push(dataProduct);
           localStorage.setItem("products", JSON.stringify(productsArray));
         }, 1200);
+      }
 
+      inputNumber.onblur = function () {
+        if (inputNumber.value < 1 || inputNumber.value === "") inputNumber.value = 1;
       }
 
     </script>

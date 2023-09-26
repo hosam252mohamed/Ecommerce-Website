@@ -985,7 +985,7 @@ h1 {
     z-index: 2;
   }
   .offers-banner .offer h1 {
-    color: #684233;
+    color: #5e3f33;
   }
   .offers-banner .offer p {
     text-align: center;
@@ -1026,7 +1026,6 @@ h1 {
 }
 .offers-banner .banners .banner2.three {
   background-image: url("../imgs/banner/b7.jpg");
-  background-position: center;
 }
 .offers-banner .banners .banner2 h2 {
   color: #333;
