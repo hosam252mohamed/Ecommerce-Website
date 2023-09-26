@@ -1574,6 +1574,9 @@ footer > p a {
   font-weight: 600;
   margin-bottom: 20px;
 }
+.product-view .details h3 {
+  font-size: 23px;
+}
 .product-view .details .type a {
   color: inherit;
   transition: var(--transition-duration);
@@ -2135,6 +2138,11 @@ footer > p a {
 }
 .table-cart tbody .title {
   white-space: wrap;
+  cursor: pointer;
+}
+.table-cart tbody .title:hover {
+  color: orangered;
+  text-decoration: underline;
 }
 .table-cart tbody input {
   width: 40px;

@@ -66,7 +66,7 @@
           <table width="100%">
             <tr>
               <td>Cart Subtotal</td>
-              <td>$<span class="subtotal">200</span></td>
+              <td>$<span class="subtotal"></span></td>
             </tr>
             <tr>
               <td>Shipping</td>
@@ -75,7 +75,7 @@
             <tr>
 
               <td>Total</td>
-              <td>$<span class="total">200</span></td>
+              <td>$<span class="total"></span></td>
             </tr>
           </table>
           <button class="place-order">Place Your Order</button>
@@ -166,50 +166,58 @@
         tbody.innerHTML += `<tr class="product-info">
               <td><i class="fa-sharp fa-regular fa-circle-xmark remove" title="Remove"></i></td>
               <td><img src="${finalArray[i].src}" alt=""></td>
-              <td class="title">${finalArray[i].title}</td>
+              <td><span class="title">${finalArray[i].title}</span></td>
               <td class="size">${finalArray[i].size}</td>
               <td class="price">$<span>${finalArray[i].price}</span></td>
               <td><input type="number" value="${finalArray[i].amount}" min="1"></td>
               <td>$<span class="product-subtotal">${finalArray[i].amount * finalArray[i].price}</span></td>
             </tr>`
       }
-      document.addEventListener("click", function (e) {
 
+      document.addEventListener("click", function (e) {
+        if (e.target.classList.contains("title")) {
+          let childrenNodes = e.target.parentNode.parentNode;
+          let productObj = {};
+          productObj.src = childrenNodes.children[1].children[0].getAttribute("src");
+          productObj.title = childrenNodes.children[2].textContent;
+          productObj.size = childrenNodes.children[3].textContent;
+          productObj.price = childrenNodes.children[4].children[0].textContent;
+          productObj.amount = 1;
+
+          localStorage.setItem("product-details", JSON.stringify(productObj));
+
+          setTimeout(() => {
+            location.href = `${location.protocol}//${location.host}/product.html`;
+          }, 200);
+        }
+      })
+
+      document.addEventListener("click", function (e) {
         if (e.target.classList.contains("remove")) {
           let src = e.target.parentNode.nextElementSibling.children[0].getAttribute("src");
           let size = e.target.parentNode.parentNode.children[3].textContent;
-          for (let i = 0; i < finalArray.length; i++) {
-            if (finalArray[i].src === src && finalArray[i].size === size) {
-              document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
-                span.innerHTML -= finalArray[i].amount;
-                localStorage.setItem("itemsLength", span.innerHTML);
-                if (span.innerHTML === "0") {
-                  span.style.display = "none";
-                  localStorage.clear("itemsLength");
-                }
-              })
-              finalArray.splice(i, 1);
-              localStorage.setItem("products", JSON.stringify(finalArray));
-            }
-          }
-
-          e.target.parentNode.parentNode.remove();
+          removeProduct(e.target, src, size);
           calcPrice();
           checkEmpty();
         }
       })
 
-      checkEmpty();
-
-      function checkEmpty() {
-        if (document.querySelector(".table-cart tbody").innerHTML.trim() === "") {
-          let table = document.querySelector(".table-cart table");
-          table.style.display = "none";
-          let p = document.createElement("p");
-          p.className = "empty";
-          p.textContent = "Your Cart Is Empty";
-          document.querySelector(".table-cart .container").appendChild(p);
+      function removeProduct(remove, src, size) {
+        for (let i = 0; i < finalArray.length; i++) {
+          if (finalArray[i].src === src && finalArray[i].size === size) {
+            document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
+              span.innerHTML -= finalArray[i].amount;
+              localStorage.setItem("itemsLength", span.innerHTML);
+              if (span.innerHTML === "0") {
+                span.style.display = "none";
+                localStorage.clear("itemsLength");
+              }
+            })
+            finalArray.splice(i, 1);
+            localStorage.setItem("products", JSON.stringify(finalArray));
+          }
         }
+        remove.parentNode.parentNode.remove();
       }
 
       let AmountInput = document.querySelectorAll(".product-info input[type='number']");
@@ -241,18 +249,15 @@
 
       AmountInput.forEach(input => {
         input.onblur = function () {
-          if (this.value < 1 || this.value === "") {
+          if (this.value == 0) {
+            let src = this.parentNode.parentNode.children[1].children[0].getAttribute("src");
+            let size = this.parentNode.parentNode.children[3].textContent;
+            removeProduct(this, src, size);
+            checkEmpty();
+          }
+          else if (this.value < 0 || this.value === "") {
             this.value = 1;
             changeProductPrice(input);
-
-            // let totalProducts = 0;
-            // finalArray.forEach(el => {
-            //   totalProducts += +el.amount
-            // });
-            // document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
-            //   span.innerHTML = totalProducts;
-            //   localStorage.setItem("itemsLength", span.innerHTML);
-            // })
           }
         }
       })
@@ -280,15 +285,31 @@
         total.innerHTML = totalPrice;
       }
 
+      checkEmpty();
+
+      function checkEmpty() {
+        console.log(document.querySelector(".subtotal").textContent);
+        if (document.querySelector(".subtotal").textContent == "0") {
+          let table = document.querySelector(".table-cart table");
+          table.style.display = "none";
+          let p = document.createElement("p");
+          p.className = "empty";
+          p.textContent = "Your Cart Is Empty";
+          document.querySelector(".table-cart .container").appendChild(p);
+          return true;
+        }
+        return false;
+      }
+
       document.querySelector(".place-order").onclick = function () {
-        if (document.querySelector(".table-cart tbody").innerHTML.trim() !== "") {
+        if (document.querySelector(".total").innerHTML !== "0") {
+
           document.querySelector(".order-audio").play();
           swal("Done!", "Your Order Has Reached Successfully!", "success").then(status => {
             if (status) {
               [...document.querySelector(".table-cart table tbody").children].forEach(child => {
                 child.remove();
               });
-              checkEmpty();
               calcPrice();
 
               document.querySelectorAll("a[href='cart.html'] span").forEach(span => {
@@ -297,9 +318,9 @@
               })
               localStorage.clear("products");
             }
+            checkEmpty();
           });
         }
-
       }
     </script>
   </body>

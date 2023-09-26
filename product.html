@@ -135,6 +135,7 @@
         document.querySelector(".product-view .image img").src = dataProduct.src;
         document.querySelector(".product-view .details h3").textContent = dataProduct.title;
         document.querySelector(".product-view .details .price").textContent = dataProduct.price;
+        document.querySelector(".product-view .details select").value = dataProduct.size;
       }
 
       let addtoCart = document.querySelector(".add button");
