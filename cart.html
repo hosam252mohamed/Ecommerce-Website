@@ -250,15 +250,15 @@
 
       AmountInput.forEach(input => {
         input.onblur = function () {
-          if (this.value == 0) {
+          if (this.value < 0 || this.value === "") {
+            this.value = 1;
+            changeProductPrice(input);
+          }
+          else if (this.value == 0) {
             let src = this.parentNode.parentNode.children[1].children[0].getAttribute("src");
             let size = this.parentNode.parentNode.children[3].textContent;
             removeProduct(this, src, size);
             checkEmpty();
-          }
-          else if (this.value < 0 || this.value === "") {
-            this.value = 1;
-            changeProductPrice(input);
           }
         }
       })
