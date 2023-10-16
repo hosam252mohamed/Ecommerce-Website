@@ -319,14 +319,27 @@ header .container {
 header .navbar {
   display: flex;
   align-items: center;
-  gap: 30px;
 }
-header .navbar a {
+header .navbar a,
+header .navbar i.fa-search {
   color: var(--main-color);
   font-size: 18px;
   font-weight: 600;
   transition: var(--transition-duration);
   position: relative;
+  cursor: pointer;
+}
+header .navbar i.search-icon {
+  font-size: 17px !important;
+}
+header i.search-icon:hover {
+  color: var(--secondary-color);
+}
+header .navbar a {
+  margin: 0 14px;
+}
+header .navbar li:nth-child(7) a {
+  margin-right: 20px;
 }
 header .navbar a.active,
 header .navbar a:hover {
@@ -372,6 +385,47 @@ header .shopping-bag span {
 header .bag {
   display: none;
 }
+header .search {
+  display: none;
+}
+
+header .search-container {
+  position: absolute;
+  right: 50px;
+  bottom: -85px;
+  padding: 10px;
+  padding-right: 15px;
+  border-radius: 25px;
+  background: white;
+  transition: 0.7s;
+  opacity: 0;
+  pointer-events: none;
+  box-shadow: 0 0 11px 2px rgb(0, 0, 0, 0.1);
+}
+header .search-container.show {
+  opacity: 1;
+  bottom: -75px;
+  pointer-events: all;
+}
+header .search-container input {
+  padding: 5px 10px;
+  border-radius: 15px;
+  border: 0;
+}
+header .search-container i {
+  cursor: pointer;
+  transition: var(--transition-duration);
+}
+header .search-container i:hover {
+  transform: rotate(90deg);
+  color: var(--secondary-color);
+}
+header a.account-icon {
+  margin: 0;
+}
+header a.account-icon::after {
+  position: initial;
+}
 
 @media (max-width: 768px) {
   header .navbar {
@@ -405,8 +459,27 @@ header .bag {
   header .navbar.open {
     right: 0;
   }
-  header .navbar li:last-child i {
+  header .navbar li {
+    margin: 13px 0;
+  }
+  header .navbar li:last-child,
+  header .navbar li:nth-last-child(2) {
+    margin: 8px 4px;
+  }
+  header .navbar li:nth-last-child(2) {
+    margin-top: 15px;
+  }
+  header .navbar li a {
+    margin: 0;
+  }
+  header .search-container {
+    right: 20px;
+  }
+  header .navbar li:nth-last-child(2) i {
     font-size: 21px;
+  }
+  header .navbar li:nth-last-child(3) {
+    display: none;
   }
   header .bar-icon,
   header .close-icon {
@@ -429,17 +502,25 @@ header .bag {
     transition: var(--transition-duration);
     z-index: 999;
   }
-  header a.bag {
+  header a.bag,
+  header .search {
     display: inline;
     position: absolute;
     right: 51px;
-    top: calc(50% - 1.5px);
+    top: 50%;
     transform: translateY(-50%);
     color: var(--main-color);
     font-size: 18px;
     font-weight: 600;
     transition: var(--transition-duration);
-    font-size: 21px;
+  }
+  header i.fa-search {
+    font-size: 17px;
+    right: 80px;
+    cursor: pointer;
+  }
+  header .navbar i.search-icon {
+    display: none;
   }
   header a.bag.active,
   header a.bag:hover {
@@ -2255,3 +2336,228 @@ footer > p a {
 }
 
 /* End Cart Section */
+
+/* SiginIn */
+
+.signin-container {
+  height: calc(100vh - 73.5px);
+  background-image: url("../imgs/signing.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.signin-container .container {
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
+.signin-container form {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255, 0.9);
+  width: 400px;
+  max-width: 400px;
+}
+@media (max-width: 450px) {
+  .signin-container form {
+    width: initial;
+  }
+}
+.signin-container form h2 {
+  margin-bottom: 5px;
+}
+.signin-container form div {
+  width: 100%;
+  position: relative;
+}
+.signin-container form .email input,
+.signin-container form .password input {
+  background: none;
+  width: 100%;
+  padding: 12px 5px;
+  border: none;
+  border-bottom: 2px solid #777;
+  transition: var(--transition-duration);
+}
+.signin-container form .email input:focus,
+.signin-container form .password input:focus {
+  border-bottom-color: #00ab8c;
+}
+.signin-container form i {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #666;
+  transition: var(--transition-duration);
+}
+.signin-container form input:focus + i {
+  color: var(--secondary-color);
+}
+.remember-and-forget {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+.remember-and-forget .remember label,
+.remember-and-forget .forget {
+  font-size: 15px;
+  color: #555;
+  cursor: pointer;
+}
+.remember-and-forget .forget {
+  white-space: nowrap;
+}
+@media (max-width: 450px) {
+  .remember-and-forget .forget {
+    white-space: wrap;
+  }
+}
+.signin-container form .login {
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-duration);
+}
+.signin-container form .login:hover,
+.signin-container form .login:hover {
+  background-color: #008275;
+}
+.signin-container form .error {
+  display: none;
+  font-size: 15px;
+  color: rgb(212, 0, 0);
+}
+.signin-container form .error.show {
+  display: initial;
+}
+.signin-container form p {
+  font-size: 15px;
+}
+.signin-container form p a {
+  color: black;
+  font-weight: 600;
+}
+
+/* SignUp */
+
+.signup-container {
+  height: calc(100vh - 73.5px);
+  background-image: url("../imgs/signing.jpg");
+  background-size: cover;
+  background-position: center;
+}
+.signup-container .container {
+  height: 100%;
+  display: grid;
+  place-content: center;
+}
+.signup-container form {
+  width: fit-content;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px 3px rgb(0, 0, 0, 0.1);
+  background-color: rgb(255, 255, 255, 0.9);
+  width: 400px;
+  max-width: 400px;
+}
+@media (max-width: 450px) {
+  .signup-container form {
+    width: initial;
+  }
+}
+.signup-container form h2 {
+  margin-bottom: 5px;
+}
+.signup-container form div {
+  width: 100%;
+  position: relative;
+}
+.signup-container form .input-box {
+  border: 2px solid #ccc;
+  border-radius: 4px;
+}
+.signup-container form .input-box.success {
+  border-color: #00ab8c;
+}
+.signup-container form .input-box.failed {
+  border-color: #d40000;
+}
+.signup-container form .input-box.add-margin {
+  margin-bottom: 12px;
+}
+.signup-container form .input-box input {
+  width: 100%;
+  padding: 12px 10px;
+  border-radius: 4px;
+  border: none;
+  transition: var(--transition-duration);
+}
+.signup-container form .input-box i {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transition: var(--transition-duration);
+  visibility: hidden;
+}
+.signup-container form .input-box.success .right {
+  visibility: visible;
+  color: #00ab8c;
+}
+.signup-container form .input-box.failed .wrong {
+  visibility: visible;
+  color: #d40000;
+}
+.signup-container form .signup {
+  width: 100%;
+  padding: 12px;
+  font-size: 17px;
+  font-weight: 600;
+  background-color: var(--secondary-color);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: var(--transition-duration);
+}
+.signup-container form .signup:hover,
+.signup-container form .signup:hover {
+  background-color: #008275;
+}
+.signup-container form .error {
+  display: none;
+  position: absolute;
+  font-size: 13px;
+  color: #d40000;
+  bottom: -22px;
+  left: 8px;
+}
+.signup-container form .input-box.failed .error {
+  display: inline-block;
+}
+.signup-container form p {
+  font-size: 15px;
+}
+.signup-container form p a {
+  color: black;
+  font-weight: 600;
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website | Search</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet">
+    <style>
+      .not-found {
+        padding: 10px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        width: fit-content;
+        border: 2px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="scrolling-up"></div>
+    <header>
+      <div class="container">
+        <a href="/"><img src="imgs/logo.png" alt=""></a>
+        <ul class="navbar">
+          <div class="nav-overlay"></div>
+          <li><i class="fa-sharp fa-solid fa-xmark-large close-icon"></i></li>
+          <li><a class='active' href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><i class="fa-solid fa-search search-icon"></i></li>
+          <li><a href="cart.html" class="shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+          <li><a href="signin.html" class="account-icon"><i class="fa-regular fa-user"></i> </a></li>
+        </ul>
+        <i class="fa-solid fa-search search search-icon"></i>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+        <div class="search-container">
+          <input type="text" placeholder="Search">
+          <i class="fa-solid fa-search search-inside"></i>
+        </div>
+
+      </div>
+    </header>
+    <div class="search-body">
+      <div class="container">
+        <div class="products">
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f2.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 1</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">92</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span>
+            </i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f3.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 2</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">86</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f4.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 3</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">99</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f5.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 4</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">71</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f6.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 5</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">89</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f7.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 6</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">78</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f8.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 7</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">95</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart">
+            <div class="product">
+              <img src="imgs/products/f1.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Cartoon Astronaut T-Shirts 8</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">78</span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n1.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 1</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  79</span>
+                <span class="new">
+                  69</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n2.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 2</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  79</span>
+                <span class="new">
+                  69</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n3.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 3</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  88</span>
+                <span class="new">
+                  79</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n4.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 4</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  99</span>
+                <span class="new">
+                  86</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n5.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 5</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  76</span>
+                <span class="new">
+                  68</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n6.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 6</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  86</span>
+                <span class="new">
+                  75</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n7.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 7</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  91</span>
+                <span class="new">
+                  80</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+          <div class="product-and-cart offer">
+            <div class="product">
+              <img src="imgs/products/n8.jpg" alt="">
+              <span class="brand">Adidas</span>
+              <h4>Astronaut T-Shirts Offer 8</h4>
+              <div class="stars">
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+              </div>
+              <span class="price">
+                <span class="old">
+                  99</span>
+                <span class="new">
+                  87</span>
+              </span>
+            </div>
+            <i class="fa-regular fa-cart-plus cart-add">
+              <span class="loading"></span></i>
+            <i class="fa-sharp fa-solid fa-right-from-bracket go-product"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="msg"></div>
+    <footer>
+      <div class="container">
+        <div class="info">
+          <a href="#"><img src="imgs/logo.png" alt=""></a>
+          <span>Contact</span>
+          <address><span>Address: </span>54 Kasr El-Nile St., Down Town</address>
+          <p><span>Phone: </span>+20123456789/+20987654321</p>
+          <p><span>Hours: </span>10:00 - 18:00. Mon - Sat</p>
+          <span>Follow Us</span>
+          <div class="social">
+            <a href="https://www.facebook.com/hosam1000mohamed" target="_blank"><i
+                class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://twitter.com/hosammo67221125" target="_blank"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.youtube.com/@hossam_ejust" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+            <a href="https://www.instagram.com/hossams0" target="_blank"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/hosam252mohamed" target="_blank"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+        <ul class="about">
+          <span>About</span>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Delivery Information</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms & Conditions</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+        <ul class="account">
+          <span>My Account</span>
+          <li><a href="#">Sign In</a></li>
+          <li><a href="cart.html">View Cart</a></li>
+          <li><a href="#">My Wishlist</a></li>
+          <li><a href="#">Track My Order</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+        <div class="download-app">
+          <span>Install App</span>
+          <p>From App Store or Google Play</p>
+          <div class="google-apple">
+            <div class="image">
+              <img src="imgs/pay/apple.png" alt="">
+            </div>
+            <div class="image">
+              <img src="imgs/pay/play.png" alt="">
+            </div>
+          </div>
+          <p>Secure Payment Getways</p>
+          <img src="imgs/pay/pay.png" alt="">
+        </div>
+      </div>
+      <p class="copyright">&copy; 2023 Ecommerce Website By <a href="https://github.com/hosam252mohamed">Hossam</a></p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script>
+      let searchValue = localStorage.getItem("searchValue").toLowerCase();
+      let allProductsH4 = document.querySelectorAll(".product-and-cart h4");
+      console.log(allProductsH4);
+      let found = 0;
+      allProductsH4.forEach((element) => {
+        let parentProduct = element.parentNode.parentNode;
+        console.log(parentProduct);
+        if (element.textContent.toLowerCase().indexOf(searchValue) > -1) {
+          parentProduct.style.display = "block";
+          found = 1;
+        } else {
+          parentProduct.style.display = "none";
+        }
+      });
+      if (!found) {
+        document.querySelector(".search-body").style.display = "none";
+        let msgBox = document.querySelector(".msg");
+        let notFoundMsg = document.createTextNode("No Product Found");
+        let div = document.createElement("div");
+        div.className = "not-found";
+        div.append(notFoundMsg);
+        msgBox.append(div);
+      }
+    </script>
+  </body>
+
+</html>

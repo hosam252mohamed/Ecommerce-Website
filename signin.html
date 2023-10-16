@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website | Login</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="scrolling-up"></div>
+    <header>
+      <div class="container">
+        <a href="/"><img src="imgs/logo.png" alt=""></a>
+        <ul class="navbar">
+          <div class="nav-overlay"></div>
+          <li><i class="fa-sharp fa-solid fa-xmark-large close-icon"></i></li>
+          <li><a class='active' href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><i class="fa-solid fa-search search-icon"></i></li>
+          <li><a href="cart.html" class="shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+          <li><a href="signin.html" class="account-icon active"><i class="fa-regular fa-user"></i> </a></li>
+        </ul>
+        <i class="fa-solid fa-search search search-icon"></i>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+        <div class="search-container">
+          <input type="text" placeholder="Search">
+          <i class="fa-solid fa-search search-inside"></i>
+        </div>
+
+      </div>
+    </header>
+    <div class="signin-container">
+      <div class="container">
+        <form action="">
+          <h2>Login</h2>
+          <div class="email">
+            <input type="email" name="email" required id="mail" placeholder="Email">
+            <i class="fa-regular fa-user"></i>
+          </div>
+          <div class="password">
+            <input type="password" placeholder="Password" id='pass'>
+            <i class="fa-regular fa-key"></i>
+          </div>
+          <div class="remember-and-forget">
+            <div class="remember">
+              <input type="checkbox" name="" id="rem">
+              <label for="rem">Remember me</label>
+            </div>
+            <span class="forget">Forget Password?</span>
+          </div>
+          <input type="submit" value="Login" class="login">
+          <span class="error">Your email or password are wrong</span>
+          <p>Don't have an account? <a href="signup.html">Register</a></p>
+        </form>
+      </div>
+    </div>
+    <audio src="audio/signed.mp3" class="sign-success"></audio>
+    <script src="js/main.js"></script>
+    <script src="js/sweetalert.js"></script>
+    <script>
+      let accountsArray = [];
+      let accountNumbers = +localStorage.getItem("accountNum") - 1;
+      for (let i = 1; i <= accountNumbers; i++) {
+        accountsArray.push(localStorage.getItem(`account${i}`));
+      }
+      let email = document.getElementById("mail");
+      let pass = document.getElementById("pass");
+      let loginBtn = document.querySelector(".login");
+
+      loginBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        let userMailEntered = email.value.trim();
+        let userPassEntered = pass.value;
+
+        if (!userMailEntered || !userPassEntered) document.querySelector(".error").style.display = "initial";
+        else {
+          let success = 0;
+          for (let i = 0; i < accountsArray.length; i++) {
+            let email = accountsArray[i].split(" ")[0];
+            let pass = accountsArray[i].split(" ")[1];
+            if (userMailEntered === email && userPassEntered === pass) {
+              success = 1;
+              break;
+            }
+          }
+          if (success) {
+            document.querySelector(".error").style.display = "none"
+            swal({
+              title: "Login Successfully!",
+              icon: "success",
+              button: "Ok",
+            }).then((status) => {
+              window.location = "index.html";
+            })
+            document.querySelector(".sign-success").play();
+          }
+          else {
+            document.querySelector(".error").style.display = "initial"
+          }
+        }
+      })
+    </script>
+  </body>
+
+</html>

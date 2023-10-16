@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce Website | Signup</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="icon" href="imgs/favicon.ico" type="image/x-icon" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600&family=Titillium+Web:wght@300;400;600;700&display=swap"
+      rel="stylesheet">
+  </head>
+
+  <body>
+    <div class="scrolling-up"></div>
+    <header>
+      <div class="container">
+        <a href="/"><img src="imgs/logo.png" alt=""></a>
+        <ul class="navbar">
+          <div class="nav-overlay"></div>
+          <li><i class="fa-sharp fa-solid fa-xmark-large close-icon"></i></li>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="shop.html">Shop</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><i class="fa-solid fa-search search-icon"></i></li>
+          <li><a href="cart.html" class="shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+          <li><a href="signin.html" class="account-icon active"><i class="fa-regular fa-user"></i> </a></li>
+        </ul>
+        <i class="fa-solid fa-search search search-icon"></i>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+        <div class="search-container">
+          <input type="text" placeholder="Search">
+          <i class="fa-solid fa-search search-inside"></i>
+        </div>
+
+      </div>
+    </header>
+    <div class="signup-container">
+      <div class="container">
+        <form action="">
+          <h2>Create Account</h2>
+          <div class="username input-box">
+            <input type="text" placeholder="Username" id='user'>
+            <i class="fa-solid fa-circle-check right"></i>
+            <i class="fa-solid fa-circle-xmark wrong"></i>
+            <span class="error"></span>
+          </div>
+          <div class="email input-box">
+            <input type="email" name="email" id="mail" placeholder="Email">
+            <i class="fa-solid fa-circle-check right"></i>
+            <i class="fa-solid fa-circle-xmark wrong"></i>
+            <span class="error"></span>
+          </div>
+          <div class="password input-box">
+            <input type="password" placeholder="Password" id='pass'>
+            <i class="fa-solid fa-circle-check right"></i>
+            <i class="fa-solid fa-circle-xmark wrong"></i>
+            <span class="error"></span>
+          </div>
+          <div class="password-confirm input-box">
+            <input type="password" placeholder="Confirm Password" id='pass2'>
+            <i class="fa-solid fa-circle-check right"></i>
+            <i class="fa-solid fa-circle-xmark wrong"></i>
+            <span class="error"></span>
+          </div>
+          <input type="submit" value="Sign Up" class="signup">
+        </form>
+      </div>
+    </div>
+    <script src="js/main.js"></script>
+    <script>
+      let signBtn = document.querySelector(".signup");
+      let username = document.getElementById("user");
+      let email = document.getElementById("mail");
+      let password = document.getElementById("pass");
+      let password2 = document.getElementById("pass2");
+      let rightCheck = 0;
+      let accountNum = localStorage.getItem("accountNum") || 1;
+
+      signBtn.addEventListener("click", function (e) {
+        e.preventDefault();
+        checkInputs();
+        if (rightCheck === 4) {
+          localStorage.setItem(
+            `account${accountNum}`,
+            `${email.value.trim()} ${password.value}`
+          );
+          localStorage.setItem("accountNum", ++accountNum);
+          setTimeout(() => {
+            window.location = "signin.html";
+          }, 250);
+        }
+      });
+
+      function checkInputs() {
+        rightCheck = 0;
+        let userValue = username.value.trim();
+        let emailValue = email.value.trim();
+        let passValue = password.value;
+        let pass2Value = password2.value;
+
+        if (!userValue) {
+          setError(username, "This Field Cannot Be Empty");
+        } else {
+          setSuccess(username);
+          rightCheck++;
+        }
+
+        if (!emailValue) {
+          setError(email, "This Field Cannot Be Empty");
+        } else if (!mailMatched(emailValue)) {
+          setError(email, "Please Enter Valid Email Address");
+        } else {
+          setSuccess(email);
+          rightCheck++;
+        }
+
+        if (!passValue) {
+          setError(password, "This Field Cannot Be Empty");
+        } else if (!passMatched(passValue)) {
+          setError(password, "Enter Strong Password Like (Hhhh@1230) 6~30");
+        } else {
+          setSuccess(password);
+          rightCheck++;
+        }
+
+        if (!pass2Value) {
+          setError(password2, "This Field Cannot Be Empty");
+        } else if (pass2Value !== passValue) {
+          setError(password2, "Passwords Not Matched");
+        } else {
+          setSuccess(password2);
+          rightCheck++;
+        }
+      }
+
+      function setError(input, msg) {
+        let inputBox = input.parentNode;
+        let errorMsg = inputBox.children[3];
+
+        inputBox.className = "input-box add-margin failed";
+        errorMsg.textContent = msg;
+      }
+
+      function setSuccess(input) {
+        let inputBox = input.parentNode;
+        inputBox.className = "input-box success";
+      }
+
+      function mailMatched(email) {
+        return /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(
+          email
+        );
+      }
+
+      function passMatched(password) {
+        return /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,30}$/.test(
+          password
+        );
+      }
+
+    </script>
+  </body>
+
+</html>

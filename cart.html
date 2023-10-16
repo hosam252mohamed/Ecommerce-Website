@@ -29,11 +29,19 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="about.html">About</a></li>
           <li><a href="contact.html">Contact</a></li>
+          <li><i class="fa-solid fa-search search-icon"></i></li>
           <li><a href="cart.html" class="shopping-bag active"><i
                 class="fa-regular fa-bag-shopping"></i><span></span></a></li>
+          <li><a href="signin.html" class="account-icon"><i class="fa-regular fa-user"></i> </a></li>
         </ul>
-        <a href="cart.html" class="bag shopping-bag active"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
+        <i class="fa-solid fa-search search search-icon"></i>
+        <a href="cart.html" class="bag shopping-bag"><i class="fa-regular fa-bag-shopping"></i><span></span></a>
         <i class="fa-sharp fa-solid fa-outdent bar-icon"></i>
+        <div class="search-container">
+          <input type="text" placeholder="Search">
+          <i class="fa-solid fa-search search-inside"></i>
+        </div>
+
       </div>
     </header>
     <div class="table-cart">
@@ -188,7 +196,7 @@
           localStorage.setItem("product-details", JSON.stringify(productObj));
 
           setTimeout(() => {
-            location.href = `${location.protocol}//${location.host}/product.html`;
+            window.location = `product.html`;
           }, 200);
         }
       })

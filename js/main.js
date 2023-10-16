@@ -75,7 +75,7 @@ document.addEventListener("click", (e) => {
     localStorage.setItem("product-details", JSON.stringify(obj));
 
     setTimeout(() => {
-      location.href = `${location.protocol}//${location.host}/product.html`;
+      window.location = `product.html`;
     }, 100);
   }
 });
@@ -97,13 +97,14 @@ function storeProduct(productChildren) {
 }
 
 let currentSlide = 1;
-let shownProducts = 8;
+let shownProducts = 6;
 let products = document.querySelectorAll(".product-and-cart");
 let range = products.length / shownProducts;
-range = range === 1 ? parseInt(range - 1) : parseInt(range);
+range =
+  products.length % shownProducts === 0 ? parseInt(range - 1) : parseInt(range);
 let slidesCon = document.querySelector(".shop-products .products-slider");
 
-if (location.href === `${location.protocol}//${location.host}/shop.html`) {
+if (location.pathname === `/shop.html`) {
   for (let i = 0; i < range + 1; i++) {
     slidesCon.innerHTML += `<span class="slide-btn">${i + 1}</span>`;
     document.querySelector(".slide-btn").classList.add("active");
@@ -115,7 +116,7 @@ if (location.href === `${location.protocol}//${location.host}/shop.html`) {
 let sliderSpans = document.querySelectorAll(".products-slider .slide-btn");
 let rightSlide = document.querySelector(".slide-right");
 
-if (location.href === `${location.protocol}//${location.host}/shop.html`) {
+if (location.pathname === `/shop.html`) {
   document.addEventListener("click", function (e) {
     if (e.target.classList.contains("slide-btn")) {
       sliderSpans.forEach((span, index) => {
@@ -189,3 +190,26 @@ function changingProducts() {
     top: 235,
   });
 }
+
+//last Edit
+
+let searchIcon = document.querySelectorAll(".search-icon");
+let searchContainer = document.querySelector(".search-container");
+
+searchIcon.forEach((search) => {
+  search.onclick = function () {
+    searchContainer.classList.toggle("show");
+  };
+});
+
+let searchClick = document.querySelector(".search-inside");
+let searchInput = document.querySelector(".search-container input");
+
+searchClick.onclick = function () {
+  if (searchInput.value) {
+    localStorage.setItem("searchValue", searchInput.value);
+    setTimeout(() => {
+      window.location = "search.html";
+    }, 300);
+  }
+};
